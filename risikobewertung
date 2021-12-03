@@ -1,0 +1,16 @@
+#
+
+IF(
+(SWITCH({Risikobewertung - Art des Screens},"Einfach",1,"Etwas aufwendiger",2,"Sonderkonstruktion",3,"Extrem Aufwendig",4)/100*35)+
+(SWITCH({Risikobewertung - Umfang der Unterkonstruktioin},"Einfach",1,"Etwas aufwendiger",2,"Aufwendig",3,"Extrem Aufwendig",4)/100*35)+
+(SWITCH({Risikobewertung - Ort der Installation},"In der Nähe",1,"Deutschland",2,"EU weit",3,"Weltweit",4)/100*15)+
+(SWITCH({Risikobewertung - Konstellation GU / Auftraggeber},"Auftraggeber direkt",1,"Auftraggeber mit GU",2,"GU",3,"sonstiges",4)/100*15)
+>=1,
+
+(SWITCH({Risikobewertung - Art des Screens},"Einfach",1,"Etwas aufwendiger",2,"Sonderkonstruktion",3,"Extrem Aufwendig",4)/100*35)+
+(SWITCH({Risikobewertung - Umfang der Unterkonstruktioin},"Einfach",1,"Etwas aufwendiger",2,"Aufwendig",3,"Extrem Aufwendig",4)/100*35)+
+(SWITCH({Risikobewertung - Ort der Installation},"In der Nähe",1,"Deutschland",2,"EU weit",3,"Weltweit",4)/100*15)+
+(SWITCH({Risikobewertung - Konstellation GU / Auftraggeber},"Auftraggeber direkt",1,"Auftraggeber mit GU",2,"GU",3,"sonstiges",4)/100*15),
+
+BLANK()
+)
