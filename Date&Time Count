@@ -1,0 +1,11 @@
+## Anzahl Tage
+DATETIME_DIFF(DATETIME_PARSE(YEAR({Datum Beleg})+1&'-01-01'),DATETIME_PARSE(YEAR({Datum Beleg})&'-01-01'), 'days')
+
+## Wochen-Nummer:
+DATETIME_FORMAT({Datum Beleg},'YYYY')&" / "&WEEKNUM({Datum Beleg}, "Monday")
+
+## Wochen-Nummer: (mit einstellig führender Null
+DATETIME_FORMAT({Datum Beleg},'YYYY')&" / "&IF(WEEKNUM({Datum Beleg}, "Monday")<=9,0)&WEEKNUM({Datum Beleg}, "Monday")
+
+## Wochen-Anzahl:
+DATETIME_DIFF(DATETIME_PARSE(YEAR({Datum Beleg})+1&'-01-01'),DATETIME_PARSE(YEAR({Datum Beleg})&'-01-01'), 'weeks')
