@@ -1,6 +1,7 @@
 ## Anzahl Tage
 DATETIME_DIFF(DATETIME_PARSE(YEAR({Datum Beleg})+1&'-01-01'),DATETIME_PARSE(YEAR({Datum Beleg})&'-01-01'), 'days')
 
+
 ## Wochen-Nummer:
 DATETIME_FORMAT({Datum Beleg},'YYYY')&" / "&WEEKNUM({Datum Beleg}, "Monday")
 
@@ -9,3 +10,16 @@ DATETIME_FORMAT({Datum Beleg},'YYYY')&" / "&IF(WEEKNUM({Datum Beleg}, "Monday")<
 
 ## Wochen-Anzahl:
 DATETIME_DIFF(DATETIME_PARSE(YEAR({Datum Beleg})+1&'-01-01'),DATETIME_PARSE(YEAR({Datum Beleg})&'-01-01'), 'weeks')
+
+Primary Field
+IF({Typ}="Tageskasse","__Tageskasse am "&DATETIME_FORMAT(SET_LOCALE({Datum Beleg}, 'de'), 'LL'), Name&" am "&DATETIME_FORMAT(SET_LOCALE({Datum Beleg}, 'de'), 'LL'))
+
+
+
+
+
+"Finanzreport vom "
+&DATETIME_FORMAT(SET_LOCALE(TODAY(), 'de'), 'LL')
+&"\n
+\n"
+&"Seit "&DATETIME_FORMAT(SET_LOCALE({Tageskasse EINLAGE - erster Tag}, 'de'), 'LL')&" - Arbeitstage gesamt: "&{Tageskasse EINLAGE COUNT}&"\n\n"&"Tageskasse Gesamt: "&{Tageskasse Calculation}&"€\n"&"andere Einnahmen Gesamt: "&{Einnahmen GESAMT}&"€\n"&"Ausgaben Gesamt: "&{Ausgaben GESAMT}&"€\n"
